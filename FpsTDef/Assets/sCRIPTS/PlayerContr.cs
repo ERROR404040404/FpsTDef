@@ -6,13 +6,15 @@ public class PlayerContr : MonoBehaviour
     float inputX;
     float inputY;
     private Rigidbody rb;
-    public float speed = 10f;
+    public float speed = 10.0f;
+    public PlayerInput input;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+       input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
