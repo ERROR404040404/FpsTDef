@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 
 
@@ -33,17 +34,24 @@ public class PlayerContr : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        playerCam = Camera.main;
+
     }
-    float inputrX, inputrZ;
+    Camera playerCam;
+    Vector2 cameraRot = new Vector2(-10, 0);
+    public float cameraYMaxMin = 90;
+
     // Update is called once per frame
     void Update()
     {
         //arrow look
-        Quaternion rot = transform.rotation;
-        rot.x = inputrX * cSpeed;
-        rot.y = inputrX * cSpeed;
+        Quaternion playerRot = Quaternion.identity;
+        playerRot.y = playerCam.transform.rotation.y;
+        playerRot.w = playerCam.transform.rotation.w;
 
-        rb.rotation = rot;
+        transform.rotation = playerRot;
+
+        cameraRot.y = Mathf.Clamp(cameraRot.y, -cameraYMaxMin, cameraYMaxMin);
 
         //movement sysyem
         Vector3 tempMove = rb.linearVelocity;
@@ -63,10 +71,5 @@ public class PlayerContr : MonoBehaviour
         inputY = InputAxis.y;
 
     }
-   public void Look(InputAction.CallbackContext context)
-    {
-        Vector2 InputAxis = context.ReadValue<Vector2>();
-
-    }    
 }
 
