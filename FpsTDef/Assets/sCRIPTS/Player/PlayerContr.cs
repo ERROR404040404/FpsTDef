@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
@@ -17,15 +18,13 @@ public class PlayerContr : MonoBehaviour
     public float speed = 50.0f;
     public float cSpeed = 5;
     public PlayerInput input;
-
-
+    public float weaponE;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         input = GetComponent<PlayerInput>();
-
-
 
         rb = GetComponent<Rigidbody>();
 
@@ -60,6 +59,9 @@ public class PlayerContr : MonoBehaviour
 
         rb.linearVelocity = (tempMove.x * transform.forward) + (tempMove.y * transform.up) + (tempMove.z * transform.right);
 
+      //  Vector3 frw = GameObject.FindWithTag("melee").GetComponent<frw>();           
+
+
 
     }
 
@@ -70,6 +72,11 @@ public class PlayerContr : MonoBehaviour
         inputX = InputAxis.x;
         inputY = InputAxis.y;
 
+    }
+    void Attack()
+    {
+       // if (Physics.Raycast(transform.position, frw, 5))
+            print("Ahoy!");
     }
 }
 
