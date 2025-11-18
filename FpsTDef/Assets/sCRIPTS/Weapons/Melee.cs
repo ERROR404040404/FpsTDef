@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.UI.Image;
 
 public class Melee : MonoBehaviour
 {
-
+    public PlayerInput input;
+    public Vector3 frw;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,17 +15,12 @@ public class Melee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
-    void FixedUpdate()
-    {
-       Vector3 frw = transform.TransformDirection(Vector3.forward);
-
-        if (Physics.Raycast(transform.position, frw, 5))
-            print("Ahoy!");
+    public void Attack(InputAction.CallbackContext context)
+    {            
+            Physics.Raycast(transform.position, frw, 5);
+            print("stabby!");        
     }
-
-    
-
 }

@@ -10,8 +10,8 @@ public class PlayerContr : MonoBehaviour
 
 
 {
-
-
+    
+    
     private Rigidbody rb;
     float inputX;
     float inputY;
@@ -28,7 +28,7 @@ public class PlayerContr : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-
+        
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -59,7 +59,7 @@ public class PlayerContr : MonoBehaviour
 
         rb.linearVelocity = (tempMove.x * transform.forward) + (tempMove.y * transform.up) + (tempMove.z * transform.right);
 
-      //  Vector3 frw = GameObject.FindWithTag("melee").GetComponent<frw>();           
+                
 
 
 
@@ -73,10 +73,6 @@ public class PlayerContr : MonoBehaviour
         inputY = InputAxis.y;
 
     }
-    void Attack()
-    {
-       // if (Physics.Raycast(transform.position, frw, 5))
-            print("Ahoy!");
-    }
+   
 }
 
