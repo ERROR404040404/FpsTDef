@@ -6,6 +6,7 @@ public class Melee : MonoBehaviour
 {
     public PlayerInput input;
     public Vector3 frw;
+    public static bool queriesHitTriggers = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,8 +20,10 @@ public class Melee : MonoBehaviour
     }
 
     public void Attack(InputAction.CallbackContext context)
-    {            
-            Physics.Raycast(transform.position, frw, 5);
-            print("stabby!");        
+    {
+        if (Physics.Raycast(transform.position, frw, 5))
+        {
+            print("stabby!");
+        }
     }
 }
