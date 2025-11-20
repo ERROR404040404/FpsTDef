@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {  
     public float health = 100;
     public float maxHealth = 100;
@@ -23,6 +23,14 @@ public class enemy : MonoBehaviour
             Destroy(gameObject);
          
         }
+        if (GameObject.FindWithTag("melee").GetComponent<Melee>().ifDamage == 1)
+        {
+            health -= 20;
+        }
+
+
+
+
     }
     private void OnCollisionEnter(Collision other)
     {
