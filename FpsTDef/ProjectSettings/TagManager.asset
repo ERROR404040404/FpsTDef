@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - melee
   - gun
   - enemy
   - spawner
   - Boom
+  - Knife
   layers:
   - Default
   - TransparentFX

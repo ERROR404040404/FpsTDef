@@ -21,24 +21,32 @@ public class Enemy : MonoBehaviour
         if (health == 0)
         {
             Destroy(gameObject);
-         
+
         }
-        if (GameObject.FindWithTag("melee").GetComponent<Melee>().ifDamage == 1)
-        {
-            health -= 20;
-        }
-
-
-
-
     }
+
+        
+
+
+
+
+    
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Boom"))
         {
             Destroy(gameObject);
         }
+       
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Knife")
+        {
+            health -= 25;
+        }
     }
 
 }

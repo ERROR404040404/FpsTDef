@@ -19,7 +19,10 @@ public class PlayerContr : MonoBehaviour
     public float cSpeed = 5;
     public PlayerInput input;
     public float weaponE;
-    
+    public Transform gunSlot;
+    public Gun currentGun;
+    public bool attacking = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +37,7 @@ public class PlayerContr : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerCam = Camera.main;
+        gunSlot = transform.Find("GunSlot");
 
     }
     Camera playerCam;
@@ -73,6 +77,27 @@ public class PlayerContr : MonoBehaviour
         inputY = InputAxis.y;
 
     }
-   
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (currentGun)
+        {
+            if (currentGun.holdAttack)
+            {
+                if (context.ReadValueAsButton())
+                    attacking = true;
+                else
+                    attacking = false;
+            }
+
+            else if (context.ReadValueAsButton())
+                currentGun.fire();
+        }
+    }
+    public void Reload()
+    {
+        if (currentGun)
+            if (!currentGun.relo)
+                currentGun.reload();
+    }
 }
 
