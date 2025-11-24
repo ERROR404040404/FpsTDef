@@ -10,6 +10,7 @@ TagManager:
   - Knife
   - melee
   - gun
+  - Bullet
   layers:
   - Default
   - TransparentFX

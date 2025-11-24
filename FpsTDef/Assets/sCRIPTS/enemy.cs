@@ -37,7 +37,8 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
+  
+
 
     }
 
@@ -46,6 +47,10 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Knife")
         {
             health -= 25;
+        }
+        if (other.tag == "Bullet")
+        {
+            health -= 50;
         }
     }
 

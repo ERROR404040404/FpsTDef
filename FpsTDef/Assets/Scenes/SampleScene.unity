@@ -1058,8 +1058,8 @@ MonoBehaviour:
   holdToAttack: 1
   weaponID: 0
   weaponName: 
-  projLifespan: 1
-  projVelocity: 100000
+  projLifespan: 5
+  projVelocity: 10000
   reloadCooldown: 1
   rof: 0.2
   fireModes: 0
