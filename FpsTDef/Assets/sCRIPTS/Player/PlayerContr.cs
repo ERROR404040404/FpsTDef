@@ -1,87 +1,120 @@
-
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 
 
 public class PlayerContr : MonoBehaviour
 
-
 {
-    
-    
+
+
+
+    GameObject WeaponSlot;
+    Ray jumpRay;
+
+ 
+
+    public float jumpDistatnce = 1.1f;
+    public float jumpHieght = 10f;
+
     private Rigidbody rb;
     float inputX;
     float inputY;
     public float speed = 50.0f;
-    public float cSpeed = 5;
+    Camera playerCam;
+    Vector2 cameraRotation = new Vector2(-10, 0);
+
+    public int health = 100;
+    public int maxhealth = 100;
+
+    Ray interactRay;
+    RaycastHit interactHit;
+    GameObject pickUpObject;
     public PlayerInput input;
-    public float weaponE;
-    public Transform gunSlot;
-    public Gun currentGun;
+    public Transform weaponSlot;
+    public Weapon currentWeapon;
+    public float interactDistance = 3f;
     public bool attacking = false;
 
+
+    public float cameraYMaxMin = 90;
+    private RigidbodyConstraints constraints;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         input = GetComponent<PlayerInput>();
+        jumpRay = new Ray(transform.position, -transform.up);
+        interactRay = new Ray(transform.position, transform.forward);
+
+
 
         rb = GetComponent<Rigidbody>();
+        playerCam = Camera.main;
+        weaponSlot = transform.GetChild(0);
 
-        
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        playerCam = Camera.main;
-        gunSlot = transform.Find("GunSlot");
-
     }
-    Camera playerCam;
-    Vector2 cameraRot = new Vector2(-10, 0);
-    public float cameraYMaxMin = 90;
 
     // Update is called once per frame
     void Update()
     {
-        //arrow look
-        Quaternion playerRot = Quaternion.identity;
-        playerRot.y = playerCam.transform.rotation.y;
-        playerRot.w = playerCam.transform.rotation.w;
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
-        transform.rotation = playerRot;
 
-        cameraRot.y = Mathf.Clamp(cameraRot.y, -cameraYMaxMin, cameraYMaxMin);
 
+        if (Physics.Raycast(interactRay, out interactHit, interactDistance))
+        {
+            if (interactHit.collider.tag == ("gun"))
+            {
+                pickUpObject = interactHit.collider.gameObject;
+            }
+        }
+        else
+        {
+            pickUpObject = null;
+        }
+        if (currentWeapon)
+
+            if (currentWeapon.holdToAttack && attacking)
+                currentWeapon.fire();
+
+
+
+        Quaternion playerRotaion = Quaternion.identity;
+        playerRotaion.y = playerCam.transform.rotation.y;
+        playerRotaion.w = playerCam.transform.rotation.w;
+
+        transform.rotation = playerRotaion;
         //movement sysyem
         Vector3 tempMove = rb.linearVelocity;
         tempMove.x = inputY * speed;
         tempMove.z = inputX * speed;
 
         rb.linearVelocity = (tempMove.x * transform.forward) + (tempMove.y * transform.up) + (tempMove.z * transform.right);
+        cameraRotation.y = Mathf.Clamp(cameraRotation.y, -cameraYMaxMin, cameraYMaxMin);
 
-                
+        jumpRay.origin = transform.position;
+        jumpRay.direction = -transform.up;
 
+        interactRay.origin = playerCam.transform.position;
+        interactRay.direction = playerCam.transform.forward;
 
-
-    }
-
-    public void Move(InputAction.CallbackContext context)
-    {
-
-        Vector2 InputAxis = context.ReadValue<Vector2>();
-        inputX = InputAxis.x;
-        inputY = InputAxis.y;
 
     }
     public void Attack(InputAction.CallbackContext context)
     {
-        if (currentGun)
+        if (currentWeapon)
         {
-            if (currentGun.holdAttack)
+            if (currentWeapon.holdToAttack)
             {
                 if (context.ReadValueAsButton())
                     attacking = true;
@@ -90,14 +123,54 @@ public class PlayerContr : MonoBehaviour
             }
 
             else if (context.ReadValueAsButton())
-                currentGun.fire();
+                currentWeapon.fire();
         }
     }
     public void Reload()
     {
-        if (currentGun)
-            if (!currentGun.relo)
-                currentGun.reload();
+        if (currentWeapon)
+            if (!currentWeapon.reloading)
+                currentWeapon.reload();
+    }
+    public void Interact()
+    {
+        if (pickUpObject)
+        {
+            if (pickUpObject.tag == "gun")
+            {
+                if (currentWeapon)
+                    DropWeapon();
+
+                pickUpObject.GetComponent<Weapon>().equip(this);
+            }
+            pickUpObject = null;
+        }
+        else
+            Reload();
+    }
+    public void DropWeapon()
+    {
+        if (currentWeapon)
+        {
+            currentWeapon.GetComponent<Weapon>().unequip();
+        }
+    }
+    public void Move(InputAction.CallbackContext context)
+    {
+        {
+            Vector2 InputAxis = context.ReadValue<Vector2>();
+            inputX = InputAxis.x;
+            inputY = InputAxis.y;
+        }
+    }
+    public void jump()
+    {
+
+        if (Physics.Raycast(jumpRay, jumpDistatnce))
+        {
+            rb.AddForce(transform.up * jumpHieght, ForceMode.Impulse);
+        }
+
+
     }
 }
-
