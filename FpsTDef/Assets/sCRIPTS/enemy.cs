@@ -52,6 +52,10 @@ public class Enemy : MonoBehaviour
         {
             health -= 50;
         }
+        if (other.tag == "Test_Tower_damage")
+        {
+            health -= 100;
+        }
     }
 
 }

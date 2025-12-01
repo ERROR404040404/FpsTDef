@@ -11,6 +11,7 @@ TagManager:
   - melee
   - gun
   - Bullet
+  - Test_Tower_damage
   layers:
   - Default
   - TransparentFX
