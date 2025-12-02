@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2525356cdc566e349ab8c7854b765175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyD: 0
   health: 100
   maxHealth: 100
   drop:

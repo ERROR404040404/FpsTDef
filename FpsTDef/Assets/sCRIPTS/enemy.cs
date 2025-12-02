@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
-{  
+{
+    public bool enemyD = false;
     public float health = 100;
     public float maxHealth = 100;
     NavMeshAgent agent;
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemyD = false;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        enemyD = false;
         if (other.tag == "Knife")
         {
             health -= 25;
@@ -56,6 +59,10 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Test_Tower_damage")
         {
             health -= 100;
+        }
+        if (other.tag == "Enemy_Detector")
+        {
+            enemyD = true;
         }
     }
 
