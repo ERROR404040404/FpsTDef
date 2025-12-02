@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +11,7 @@ public class PlayerContr : MonoBehaviour
 {
 
 
-
+    
     GameObject WeaponSlot;
     Ray jumpRay;
 
@@ -59,11 +60,16 @@ public class PlayerContr : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+    
+
+
         if (health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -172,5 +178,13 @@ public class PlayerContr : MonoBehaviour
         }
 
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Usb"))
+        {
+            Destroy(other.gameObject);
+
+        }
     }
 }

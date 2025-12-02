@@ -12,6 +12,8 @@ TagManager:
   - gun
   - Bullet
   - Test_Tower_damage
+  - bits
+  - Usb
   layers:
   - Default
   - TransparentFX

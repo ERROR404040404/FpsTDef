@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float health = 100;
     public float maxHealth = 100;
     NavMeshAgent agent;
+    public GameObject[] drop;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +22,7 @@ public class Enemy : MonoBehaviour
         if (health == 0)
         {
             Destroy(gameObject);
-
+            Instantiate(drop[Random.Range(0, drop.Length)], transform.position, Quaternion.identity);
         }
     }
 
