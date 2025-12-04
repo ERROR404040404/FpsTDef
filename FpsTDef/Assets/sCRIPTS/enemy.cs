@@ -1,4 +1,5 @@
-using Unity.VisualScripting;    
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,13 +20,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = GameObject.Find("Bombba").transform.position;
+        
+
+        if (GameObject.Find("Bombba") == true)
+        {
+            agent.destination = GameObject.Find("Bombba").transform.position;
+
+        }
+        if (GameObject.Find("Bombba")== false)
+        {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+        }
 
         if (health == 0)
         {
             Destroy(gameObject);
             Instantiate(drop[Random.Range(0, drop.Length)], transform.position, Quaternion.identity);
         }
+        
     }
 
         
