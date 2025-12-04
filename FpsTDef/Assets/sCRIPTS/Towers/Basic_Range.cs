@@ -42,9 +42,10 @@ public class Base_Tower_Range : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            Debug.Log("Video ergo cogito.");
+          Debug.Log("Video ergo cogito.");
+          {
+            if (other.tag == "enemy")
             {
-                if (other.tag == "enemy")
                 weaponSpeaker.Play();
                 GameObject p = Instantiate(projectile, firePoint.position, firePoint.rotation);
                 p.GetComponent<Rigidbody>().AddForce(firingDirection.transform.forward * projVelocity);
@@ -52,8 +53,8 @@ public class Base_Tower_Range : MonoBehaviour
                 clip--;
                 canFire = false;
                 StartCoroutine("cooldownFire");
-                
             }
+          }
     }
     
     
