@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Enemy_Detector")
         {
             enemyD = true;
+            Debug.Log("Video ergo cogito. Part 1");
         }
     }
 

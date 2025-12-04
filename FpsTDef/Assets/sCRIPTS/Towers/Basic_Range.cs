@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
-public class Base_Tower : MonoBehaviour
+public class Base_Tower_Range : MonoBehaviour
 {
     public Enemy enemyObj;
     public GameObject projectile;
@@ -35,17 +35,16 @@ public class Base_Tower : MonoBehaviour
 
     void Start()
     {
-        enemyObj = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+        enemyObj = GameObject.FindGameObjectWithTag("enemy").GetComponent<Enemy>();
         weaponSpeaker = GetComponent<AudioSource>();
         firePoint = transform.GetChild(0);
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter(Collider other)
     {
-        if (enemyObj.enemyD)
-        {
-            if (clip > 0 && weaponID > -1)
+            Debug.Log("Video ergo cogito.");
             {
+                if (other.tag == "enemy")
                 weaponSpeaker.Play();
                 GameObject p = Instantiate(projectile, firePoint.position, firePoint.rotation);
                 p.GetComponent<Rigidbody>().AddForce(firingDirection.transform.forward * projVelocity);
@@ -53,10 +52,10 @@ public class Base_Tower : MonoBehaviour
                 clip--;
                 canFire = false;
                 StartCoroutine("cooldownFire");
-
+                
             }
-        }
     }
+    
     
     public void reload()
     {
