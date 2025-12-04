@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1875675630985651824}
   - component: {fileID: 4959857410613819224}
   - component: {fileID: 9183277857885668662}
-  - component: {fileID: 7163992929738778078}
   m_Layer: 0
   m_Name: Placeholder Knife
   m_TagString: melee
@@ -109,17 +108,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7163992929738778078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3411217976548849178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6877f38434efb45a053a8f61a73214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  frw: {x: 0, y: 0, z: 0}

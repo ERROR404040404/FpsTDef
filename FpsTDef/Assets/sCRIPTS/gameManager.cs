@@ -7,6 +7,8 @@ public class gameManager : MonoBehaviour
    
     TextMeshProUGUI bits;
     GameObject val;
+    TextMeshProUGUI wave;
+    GameObject waveNumb;
 
 
 
@@ -17,12 +19,14 @@ public class gameManager : MonoBehaviour
         {
 
             bits = GameObject.FindGameObjectWithTag("bits").GetComponent<TextMeshProUGUI>();
+           
         }
     }
         // Update is called once per frame
         void Update()
         {
-        bits.text = "bits:" + val.GetComponent<vaule>().value;
+        //bits.text = "bits:" + val.GetComponent<vaule>().value;
+        
 
     }
 

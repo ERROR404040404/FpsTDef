@@ -1,30 +1,32 @@
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
+using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class vaule : MonoBehaviour
 
 {
-  
-    public int value = 0;
+  TextMeshProUGUI bits;
+    public int value;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      
+      bits = GameObject.FindGameObjectWithTag("bits").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.CompareTag("Player"))
+      if (gameObject.tag == "Player")
         {
-            value += 10;
-          
-          
+            value += 1;
+         
         }
-
+           bits.text = "bits: " + value;
+      
     }
 
 }

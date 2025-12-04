@@ -1,12 +1,18 @@
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class spawner : MonoBehaviour
 {
     public GameObject[] enemys;
+    public Transform[] spawns;
     public bool isSpawning;
     public int spawnlimit;
     public int spawncount;
     public int waveNumb;
+    TextMeshProUGUI wave;
     
 
 
@@ -14,23 +20,14 @@ public class spawner : MonoBehaviour
     void Start()
     {
 
-        if (GameObject.FindWithTag("spawner") == true)
-        {
-            gameObject.SetActive(false);
-            isSpawning = false;
-        }
-     
-        if (GameObject.FindWithTag("spawner") == false)
-        {
-            isSpawning = true;
-            gameObject.SetActive(true);
-        }
+
     }
 
     // Update is called once per frame
     void Update()
     {  
-        
+        wave = GameObject.FindGameObjectWithTag("wave").GetComponent<TextMeshProUGUI>();
+
         spawncount = GameObject.FindGameObjectsWithTag("enemy").Length;
 
         if (spawncount >= spawnlimit)
@@ -48,13 +45,22 @@ public class spawner : MonoBehaviour
             spawncount -= 0;
             waveNumb += 1;
             SpawnEnemyWave(waveNumb);
+            wave.text = "wave: " + waveNumb;
         }
     }
     void SpawnEnemyWave(int enemyToSpawn)
     {
+        List<Transform> spawnPoints = new List<Transform>(spawns);
         for (int i = 0; i < enemyToSpawn; i++)
         {
-            Instantiate(enemys[Random.Range(0, enemys.Length)], transform.position, Quaternion.identity);
+            if (spawnPoints.Count == 0)
+            {
+                spawnPoints = new List<Transform>(spawns);
+            }
+            int index = Random.Range(0, spawnPoints.Count);
+            Transform spawnPoint = spawnPoints[index];
+            Instantiate(enemys[Random.Range(0, enemys.Length)], spawnPoint.position, Quaternion.identity);
+            spawnPoints.RemoveAt(index);
             spawncount += 1;
         }
     }

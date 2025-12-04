@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 
 
@@ -11,7 +12,7 @@ public class PlayerContr : MonoBehaviour
 {
 
 
-    
+
     GameObject WeaponSlot;
     Ray jumpRay;
 
@@ -46,6 +47,7 @@ public class PlayerContr : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
         input = GetComponent<PlayerInput>();
         jumpRay = new Ray(transform.position, -transform.up);
         interactRay = new Ray(transform.position, transform.forward);
@@ -67,8 +69,7 @@ public class PlayerContr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
-
+      
 
         if (health <= 0)
         {
@@ -183,6 +184,8 @@ public class PlayerContr : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Usb"))
         {
+
+
             Destroy(other.gameObject);
 
         }
