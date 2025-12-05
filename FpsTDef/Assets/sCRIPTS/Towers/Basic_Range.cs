@@ -16,7 +16,7 @@ public class Base_Tower_Range : MonoBehaviour
     public int weaponID;
     public string weaponName;
 
-    [Header("Weapon Stats")]
+    [Header("Tower Stats")]
     public float projLifespan;
     public float projVelocity;
     public float reloadCooldown;
@@ -35,25 +35,24 @@ public class Base_Tower_Range : MonoBehaviour
 
     void Start()
     {
-        
+        weaponSpeaker.Play();
+        firingDirection = Camera.main;
         weaponSpeaker = GetComponent<AudioSource>();
         firePoint = transform.GetChild(0);
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-          Debug.Log("Video ergo cogito.");
-          {
-            if (other.tag == "enemy")
+    { 
+            if (other.CompareTag("enemy")) 
             {
-                weaponSpeaker.Play();
+                canFire = true;
+                Debug.Log("Video ergo cogito.");
                 GameObject p = Instantiate(projectile, firePoint.position, firePoint.rotation);
                 p.GetComponent<Rigidbody>().AddForce(firingDirection.transform.forward * projVelocity);
                 Destroy(p, projLifespan);
                 clip--;
                 StartCoroutine("cooldownFire");
             }
-          }
     }
     
     

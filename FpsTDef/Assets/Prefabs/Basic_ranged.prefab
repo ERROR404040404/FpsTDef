@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe3f514fc0a0da46aa1eb4462654dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObj: {fileID: 815311878975195771, guid: 68df0434c9dce294b814c19691c6eb0a, type: 3}
   projectile: {fileID: 4220413104997014994, guid: cfe23e30fe72b7e49a130dc3f9f5f97c, type: 3}
   weaponSpeaker: {fileID: 0}
   firePoint: {fileID: 4832065349617431716}
@@ -129,8 +128,8 @@ MonoBehaviour:
   reloading: 0
   weaponID: 0
   weaponName: 
-  projLifespan: 9
-  projVelocity: 9
+  projLifespan: 1
+  projVelocity: 10000
   reloadCooldown: 0
   rof: 0
   fireModes: 0
