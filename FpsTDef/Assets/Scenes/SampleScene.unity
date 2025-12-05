@@ -2648,6 +2648,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 497097641}
+        m_TargetAssemblyTypeName: PlayerContr, Assembly-CSharp
+        m_MethodName: TowerSpawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
@@ -2876,6 +2888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f407c7cb7531a6e4fbbfba5ba0b6363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowersPrefab:
+  - {fileID: 87513852664380570, guid: 9adaddf33bd762442ae2e26e2e2a3cb2, type: 3}
   jumpDistatnce: 5
   jumpHieght: 5
   speed: 10
@@ -8147,7 +8161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &2050853996
 BoxCollider:
   m_ObjectHideFlags: 0

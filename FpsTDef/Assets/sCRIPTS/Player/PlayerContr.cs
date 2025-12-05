@@ -11,7 +11,7 @@ public class PlayerContr : MonoBehaviour
 
 {
 
-
+    public GameObject[] TowersPrefab;
 
     GameObject WeaponSlot;
     Ray jumpRay;
@@ -189,5 +189,11 @@ public class PlayerContr : MonoBehaviour
             Destroy(other.gameObject);
 
         }
+    }
+    public void TowerSpawn(InputAction.CallbackContext context)
+    {
+        
+            Instantiate(TowersPrefab[0], transform.position + transform.forward * 2, Quaternion.identity);
+        
     }
 }
