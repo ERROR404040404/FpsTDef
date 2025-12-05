@@ -36,7 +36,7 @@ public class Base_Tower_Range : MonoBehaviour
     void Start()
     {
         weaponSpeaker.Play();
-        firingDirection = Camera.main;
+
         weaponSpeaker = GetComponent<AudioSource>();
         firePoint = transform.GetChild(0);
     }
@@ -48,7 +48,7 @@ public class Base_Tower_Range : MonoBehaviour
                 canFire = true;
                 Debug.Log("Video ergo cogito.");
                 GameObject p = Instantiate(projectile, firePoint.position, firePoint.rotation);
-                p.GetComponent<Rigidbody>().AddForce(firingDirection.transform.forward * projVelocity);
+                p.GetComponent<Rigidbody>().AddForce(transform.forward * projVelocity);
                 Destroy(p, projLifespan);
                 clip--;
                 StartCoroutine("cooldownFire");
