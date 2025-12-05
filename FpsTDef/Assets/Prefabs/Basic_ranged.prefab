@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8681800048331119140}
   m_Layer: 0
   m_Name: Enemy_Detector
-  m_TagString: Test_Tower_damage
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

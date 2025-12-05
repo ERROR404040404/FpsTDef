@@ -72,11 +72,7 @@ public class Enemy : MonoBehaviour
         {
             health -= 100;
         }
-        if (other.tag == "Enemy_Detector")
-        {
-            enemyD = true;
-            Debug.Log("Video ergo cogito. Part 1");
-        }
+        
     }
 
 }

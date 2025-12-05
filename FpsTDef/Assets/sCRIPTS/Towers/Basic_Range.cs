@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 
 public class Base_Tower_Range : MonoBehaviour
 {
-    public Enemy enemyObj;
+   
     public GameObject projectile;
     public AudioSource weaponSpeaker;
     public Transform firePoint;
@@ -35,7 +35,7 @@ public class Base_Tower_Range : MonoBehaviour
 
     void Start()
     {
-        enemyObj = GameObject.FindGameObjectWithTag("enemy").GetComponent<Enemy>();
+        
         weaponSpeaker = GetComponent<AudioSource>();
         firePoint = transform.GetChild(0);
     }
@@ -51,7 +51,6 @@ public class Base_Tower_Range : MonoBehaviour
                 p.GetComponent<Rigidbody>().AddForce(firingDirection.transform.forward * projVelocity);
                 Destroy(p, projLifespan);
                 clip--;
-                canFire = false;
                 StartCoroutine("cooldownFire");
             }
           }
