@@ -12,13 +12,14 @@ using  System.Collections;
 public class PlayerContr : MonoBehaviour
 
 {
-
+    public int val = 0;
     public GameObject[] TowersPrefab;
 
     GameObject WeaponSlot;
     Ray jumpRay;
 
-
+    TextMeshProUGUI bits;
+    public int bitsAmount = 0;
 
     public float jumpDistatnce = 1.1f;
     public float jumpHieght = 10f;
@@ -43,6 +44,7 @@ public class PlayerContr : MonoBehaviour
     public bool attacking = false;
     public float towerCooldown ;
     public bool canSpawnTower = true;
+    public bool canbuyTower = true;
 
 
     public float cameraYMaxMin = 90;
@@ -51,12 +53,12 @@ public class PlayerContr : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
         input = GetComponent<PlayerInput>();
         jumpRay = new Ray(transform.position, -transform.up);
         interactRay = new Ray(transform.position, transform.forward);
 
-
+        bits = GameObject.FindGameObjectWithTag("bits").GetComponent<TextMeshProUGUI>();
 
         rb = GetComponent<Rigidbody>();
         playerCam = Camera.main;
@@ -73,24 +75,43 @@ public class PlayerContr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (Keyboard.current.digit1Key.wasPressedThisFrame && canSpawnTower)
+        bits.text = "defcoin:" + bitsAmount;
+        bitsAmount = Mathf.Clamp(bitsAmount, 0, int.MaxValue);
+            if (Keyboard.current.digit1Key.wasPressedThisFrame && canSpawnTower && canbuyTower)
             {
-                 Instantiate(TowersPrefab[0], transform.position + transform.forward, Quaternion.identity);
+                
+                if (bitsAmount >= 100)
+                { 
+                    bitsAmount -= 100;
+                    Instantiate(TowersPrefab[0], transform.position + transform.forward, transform.localRotation);
                  canSpawnTower = false;
                  StartCoroutine("TowerTimer");
+                }
+
+
+                
             }
             if (Keyboard.current.digit2Key.wasPressedThisFrame && canSpawnTower)
             {
-                Instantiate(TowersPrefab[1], transform.position + transform.forward, Quaternion.identity);
+                if (bitsAmount >= 200)
+                {
+                                    bitsAmount -= 200;   
+                Instantiate(TowersPrefab[1], transform.position + transform.forward, transform.localRotation);
                 canSpawnTower = false;
                 StartCoroutine("TowerTimer");
+                }
+
             }
             if (Keyboard.current.digit3Key.wasPressedThisFrame && canSpawnTower)
             {
-                Instantiate(TowersPrefab[2], transform.position + transform.forward, Quaternion.identity);
-                canSpawnTower = false;
-                StartCoroutine("TowerTimer");
-            }
+                 if (bitsAmount >= 300)
+                {
+                    bitsAmount -= 300;
+                    Instantiate(TowersPrefab[2], transform.position + transform.forward, transform.localRotation);
+                    canSpawnTower = false;
+                    StartCoroutine("TowerTimer");
+                }
+        }
 
         if (health <= 0)
         {
@@ -206,7 +227,7 @@ public class PlayerContr : MonoBehaviour
         if (other.gameObject.CompareTag("Usb"))
         {
 
-
+            defcoin(10);
             Destroy(other.gameObject);
 
         }
@@ -216,5 +237,10 @@ public class PlayerContr : MonoBehaviour
     {
         yield return new WaitForSeconds(towerCooldown);
         canSpawnTower = true;
+    }
+    public void defcoin(int amount)
+    {
+        bitsAmount += amount;
+
     }
 }
