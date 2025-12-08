@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
+using static UnityEngine.Rendering.DebugUI.Table;
+using  System.Collections;
 
 
 
@@ -16,7 +18,7 @@ public class PlayerContr : MonoBehaviour
     GameObject WeaponSlot;
     Ray jumpRay;
 
- 
+
 
     public float jumpDistatnce = 1.1f;
     public float jumpHieght = 10f;
@@ -39,6 +41,8 @@ public class PlayerContr : MonoBehaviour
     public Weapon currentWeapon;
     public float interactDistance = 3f;
     public bool attacking = false;
+    public float towerCooldown ;
+    public bool canSpawnTower = true;
 
 
     public float cameraYMaxMin = 90;
@@ -47,7 +51,7 @@ public class PlayerContr : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+
         input = GetComponent<PlayerInput>();
         jumpRay = new Ray(transform.position, -transform.up);
         interactRay = new Ray(transform.position, transform.forward);
@@ -62,14 +66,31 @@ public class PlayerContr : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+            if (Keyboard.current.digit1Key.wasPressedThisFrame && canSpawnTower)
+            {
+                 Instantiate(TowersPrefab[0], transform.position + transform.forward, Quaternion.identity);
+                 canSpawnTower = false;
+                 StartCoroutine("TowerTimer");
+            }
+            if (Keyboard.current.digit2Key.wasPressedThisFrame && canSpawnTower)
+            {
+                Instantiate(TowersPrefab[1], transform.position + transform.forward, Quaternion.identity);
+                canSpawnTower = false;
+                StartCoroutine("TowerTimer");
+            }
+            if (Keyboard.current.digit3Key.wasPressedThisFrame && canSpawnTower)
+            {
+                Instantiate(TowersPrefab[2], transform.position + transform.forward, Quaternion.identity);
+                canSpawnTower = false;
+                StartCoroutine("TowerTimer");
+            }
 
         if (health <= 0)
         {
@@ -190,10 +211,10 @@ public class PlayerContr : MonoBehaviour
 
         }
     }
-    public void TowerSpawn(InputAction.CallbackContext context)
+ 
+    IEnumerator TowerTimer()
     {
-        
-            Instantiate(TowersPrefab[0], transform.position + transform.forward * 2, Quaternion.identity);
-        
+        yield return new WaitForSeconds(towerCooldown);
+        canSpawnTower = true;
     }
 }

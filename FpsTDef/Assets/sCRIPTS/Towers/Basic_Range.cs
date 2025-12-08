@@ -6,7 +6,7 @@ public class Base_Tower_Range : MonoBehaviour
 {
    
     public GameObject projectile;
-    public AudioSource weaponSpeaker;
+
     public Transform firePoint;
     private Camera firingDirection;
 
@@ -35,9 +35,8 @@ public class Base_Tower_Range : MonoBehaviour
 
     void Start()
     {
-        weaponSpeaker.Play();
+ 
 
-        weaponSpeaker = GetComponent<AudioSource>();
         firePoint = transform.GetChild(0);
     }
 
