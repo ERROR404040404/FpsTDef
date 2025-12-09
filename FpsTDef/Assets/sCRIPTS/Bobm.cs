@@ -13,7 +13,7 @@ public class Bobm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health == 0)
+        if (health <= 0)
         {
             gameObject.SetActive(false);
         }
@@ -24,7 +24,10 @@ public class Bobm : MonoBehaviour
         {
             health -= 100;
         }
-
+        if (other.gameObject.CompareTag("follow"))
+        {
+            health -= 10;
+        }
 
 
     }

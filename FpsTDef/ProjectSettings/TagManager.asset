@@ -15,6 +15,7 @@ TagManager:
   - bits
   - Usb
   - wave
+  - follow
   layers:
   - Default
   - TransparentFX

@@ -45,6 +45,8 @@ public class PlayerContr : MonoBehaviour
     public float towerCooldown ;
     public bool canSpawnTower = true;
     public bool canbuyTower = true;
+    public bool canbuygun = false;
+    public  bool isgunpicked = false;
 
 
     public float cameraYMaxMin = 90;
@@ -75,8 +77,19 @@ public class PlayerContr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bits.text = "defcoin:" + bitsAmount;
+        if(GameObject.FindWithTag("gun") && isgunpicked)
+        {
+            canbuygun = false;
+        }
+        else if(bitsAmount >= 50)
+        {
+            canbuygun = true;
+            
+        }
+            bits.text = "defcoin:" + bitsAmount;
         bitsAmount = Mathf.Clamp(bitsAmount, 0, int.MaxValue);
+        
+
             if (Keyboard.current.digit1Key.wasPressedThisFrame && canSpawnTower && canbuyTower)
             {
                 
@@ -115,22 +128,28 @@ public class PlayerContr : MonoBehaviour
 
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine("Respawn");
+            DropWeapon();
         }
 
 
-
-        if (Physics.Raycast(interactRay, out interactHit, interactDistance))
+       if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if (interactHit.collider.tag == ("gun"))
-            {
-                pickUpObject = interactHit.collider.gameObject;
-            }
+             if (Physics.Raycast(interactRay, out interactHit, interactDistance) && canbuygun )
+             {
+                if (interactHit.collider.tag == ("gun"))
+                {
+                    pickUpObject = interactHit.collider.gameObject;
+                    bitsAmount -= 50;
+                    isgunpicked = true;
+                }
+             }
+                else
+                {
+                    pickUpObject = null;
+                }
         }
-        else
-        {
-            pickUpObject = null;
-        }
+       
         if (currentWeapon)
 
             if (currentWeapon.holdToAttack && attacking)
@@ -202,6 +221,7 @@ public class PlayerContr : MonoBehaviour
         if (currentWeapon)
         {
             currentWeapon.GetComponent<Weapon>().unequip();
+            isgunpicked = false;
         }
     }
     public void Move(InputAction.CallbackContext context)
@@ -231,6 +251,13 @@ public class PlayerContr : MonoBehaviour
             Destroy(other.gameObject);
 
         }
+
+        if (other.gameObject.CompareTag("enemy"))
+        {
+            health -= 10;
+        }
+
+
     }
  
     IEnumerator TowerTimer()
@@ -242,5 +269,10 @@ public class PlayerContr : MonoBehaviour
     {
         bitsAmount += amount;
 
+    }
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(3f);
+        health = maxhealth;
     }
 }

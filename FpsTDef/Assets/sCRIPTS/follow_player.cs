@@ -1,67 +1,52 @@
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class follow_player : MonoBehaviour
 {
-    public bool enemyD = false;
     public float health = 100;
     public float maxHealth = 100;
-    NavMeshAgent agent;
     public GameObject[] drop;
+    NavMeshAgent agent;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        enemyD = false;
         agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-
-
-        if (GameObject.Find("Bombba") == true)
-        {
-            agent.destination = GameObject.Find("Bombba").transform.position;
-
-        }
-        if (GameObject.Find("Bombba")== false)
-        {
-            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-        }
-
+        agent.destination = GameObject.Find("player").transform.position;
         if (health == 0)
         {
             Destroy(gameObject);
             Instantiate(drop[Random.Range(0, drop.Length)], transform.position, Quaternion.identity);
         }
-        
+        if (GameObject.Find("Bombba") == false)
+        {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+        }
+
     }
 
-        
-
-
-
-
-    
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+
         if (other.gameObject.CompareTag("Boom"))
         {
             Destroy(gameObject);
         }
-  
-
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        enemyD = false;
+       
         if (other.tag == "Knife")
         {
             health -= 25;
@@ -74,7 +59,9 @@ public class Enemy : MonoBehaviour
         {
             health -= 100;
         }
-        
+
     }
+
+
 
 }
