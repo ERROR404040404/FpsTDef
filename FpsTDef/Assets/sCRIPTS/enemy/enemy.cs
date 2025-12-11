@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public spawner e;
+    
     public bool enemyD = false;
     public float health = 100;
     public float maxHealth = 100;

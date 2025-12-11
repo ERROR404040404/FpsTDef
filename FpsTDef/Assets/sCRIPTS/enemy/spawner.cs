@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class spawner : MonoBehaviour
 {
-    public follow_player follow_Player;
+
     public GameObject[] enemys;
     public Transform[] spawns;
     public bool isSpawning;
