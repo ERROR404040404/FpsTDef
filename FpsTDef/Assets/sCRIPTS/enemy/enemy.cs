@@ -74,14 +74,8 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    private void FixedUpdate()
-    {
-        health = maxHealth;
-        if (e.waveNumb > 1)
-        {
-            maxHealth = (100 + ((float)e.waveNumb * 10));
-        }
-    }
+
+    
 
 
 }

@@ -16,6 +16,7 @@ TagManager:
   - Usb
   - wave
   - follow
+  - Gamemanager
   layers:
   - Default
   - TransparentFX

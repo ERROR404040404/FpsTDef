@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
-   
+   public follow_player enemy;
     TextMeshProUGUI bits;
     GameObject val;
     TextMeshProUGUI wave;
@@ -30,5 +30,12 @@ public class gameManager : MonoBehaviour
 
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("bullet"))
+        {
+            enemy.health -= 50;
+        }
+    }
 }
 

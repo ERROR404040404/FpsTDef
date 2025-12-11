@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Weapon : MonoBehaviour
 {
-    PlayerContr player;
+   public  PlayerContr player;
 
     public GameObject projectile;
     public AudioSource weaponSpeaker;

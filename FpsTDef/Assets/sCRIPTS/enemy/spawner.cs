@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class spawner : MonoBehaviour
 {
-    public Enemy e;
+    public follow_player follow_Player;
     public GameObject[] enemys;
     public Transform[] spawns;
     public bool isSpawning;
@@ -14,8 +14,9 @@ public class spawner : MonoBehaviour
     public int spawncount;
     public int waveNumb;
     TextMeshProUGUI wave;
-    
-    
+   
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,13 +43,18 @@ public class spawner : MonoBehaviour
             isSpawning = true;
             
         }
-        if(GameObject.FindGameObjectsWithTag("enemy").Length == 0)
+        if (GameObject.FindGameObjectsWithTag("enemy").Length == 0 && GameObject.FindGameObjectsWithTag("follow").Length == 0)
         {
             spawncount -= 0;
             waveNumb += 1;
             SpawnEnemyWave(waveNumb);
             wave.text = "wave: " + waveNumb;
+            
+
         }
+
+
+
     }
     void SpawnEnemyWave(int enemyToSpawn)
     {
@@ -62,9 +68,8 @@ public class spawner : MonoBehaviour
             int index = Random.Range(0, spawnPoints.Count);
             Transform spawnPoint = spawnPoints[index];
             GameObject en = Instantiate(enemys[Random.Range(0, enemys.Length)], spawnPoint.position, Quaternion.identity);
-            e = en.GetComponent<Enemy>();
-            e.maxHealth = 0;
-            spawnPoints.RemoveAt(index);
+     
+
             spawncount += 1;
         }
     }
