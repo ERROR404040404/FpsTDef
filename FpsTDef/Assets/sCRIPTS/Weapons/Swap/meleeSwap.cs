@@ -1,0 +1,49 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
+
+public class meleeSwap : MonoBehaviour
+{
+    public int i = 0;
+    private IEnumerator coroutine;
+
+
+
+
+
+
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Keyboard.current.qKey.wasPressedThisFrame && (i == 0))
+        {
+            transform.localPosition = new Vector3((1 / 2), 0, 0);
+            transform.localRotation = Quaternion.Euler(90, 0, 0);
+            i += 1;
+            coroutine = f(1f);
+            StartCoroutine(coroutine);
+        }
+        if (Keyboard.current.qKey.wasPressedThisFrame && (i == 1))
+        {
+            transform.localPosition = new Vector3(-(1 / 2), 0, 0);
+            transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            i -= 1;
+            coroutine = f(1f);
+            StartCoroutine(coroutine);
+        }
+    }
+    private IEnumerator f(float waitTime)
+        {
+        yield return new WaitForSeconds(waitTime);
+        }
+
+}
