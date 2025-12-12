@@ -12,6 +12,7 @@ using  System.Collections;
 public class PlayerContr : MonoBehaviour
 
 {
+    public GameObject StabyStick;
     public int val = 0;
     public GameObject[] TowersPrefab;
 
@@ -47,7 +48,7 @@ public class PlayerContr : MonoBehaviour
     public bool canbuyTower = true;
     public bool canbuygun = false;
     public  bool isgunpicked = false;
-
+    public bool spritning = false;
 
     public float cameraYMaxMin = 90;
     private RigidbodyConstraints constraints;
@@ -89,7 +90,7 @@ public class PlayerContr : MonoBehaviour
             bits.text = "defcoin:" + bitsAmount;
         bitsAmount = Mathf.Clamp(bitsAmount, 0, int.MaxValue);
         
-
+        
             if (Keyboard.current.digit1Key.wasPressedThisFrame && canSpawnTower && canbuyTower)
             {
                 
@@ -130,6 +131,7 @@ public class PlayerContr : MonoBehaviour
         {
             StartCoroutine("Respawn");
             DropWeapon();
+            StabyStick.gameObject.SetActive(true);
         }
 
 
@@ -210,6 +212,8 @@ public class PlayerContr : MonoBehaviour
                     DropWeapon();
 
                 pickUpObject.GetComponent<Weapon>().equip(this);
+                GameObject.Find("Melee slot").SetActive(false);
+
             }
             pickUpObject = null;
         }
@@ -222,6 +226,7 @@ public class PlayerContr : MonoBehaviour
         {
             currentWeapon.GetComponent<Weapon>().unequip();
             isgunpicked = false;
+            
         }
     }
     public void Move(InputAction.CallbackContext context)
@@ -256,7 +261,10 @@ public class PlayerContr : MonoBehaviour
         {
             health -= 10;
         }
-
+        if (other.gameObject.CompareTag("follow"))
+        {
+            health -= 10;
+        }
 
     }
  
@@ -274,5 +282,18 @@ public class PlayerContr : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         health = maxhealth;
+    }
+    public void sprinting(InputAction.CallbackContext context)
+    {
+        if (context.ReadValueAsButton())
+        {
+            speed = 20f;
+            spritning = true;
+        }
+        else
+        {
+            speed = 10f;
+            spritning = false;
+        }
     }
 }

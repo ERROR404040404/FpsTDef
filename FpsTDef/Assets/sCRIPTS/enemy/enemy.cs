@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
         enemyD = false;
         if (other.tag == "Knife")
         {
-            health -= 25;
+            health -= 50;
         }
         if (other.tag == "Bullet")
         {

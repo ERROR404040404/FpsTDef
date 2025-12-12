@@ -2691,7 +2691,19 @@ MonoBehaviour:
     m_ActionId: b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba
     m_ActionName: 'Player/Next[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 497097641}
+        m_TargetAssemblyTypeName: PlayerContr, Assembly-CSharp
+        m_MethodName: sprinting
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 641cd816-40e6-41b4-8c3d-04687c349290
     m_ActionName: 'Player/Sprint[/Keyboard/leftShift]'
   - m_PersistentCalls:
@@ -2872,6 +2884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f407c7cb7531a6e4fbbfba5ba0b6363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StabyStick: {fileID: 1433573120}
   val: 0
   TowersPrefab:
   - {fileID: 87513852664380570, guid: 9adaddf33bd762442ae2e26e2e2a3cb2, type: 3}
@@ -2893,6 +2906,7 @@ MonoBehaviour:
   canbuyTower: 1
   canbuygun: 0
   isgunpicked: 0
+  spritning: 0
   cameraYMaxMin: 90
 --- !u!1 &502162250
 GameObject:
@@ -3507,7 +3521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13a00833c1545184e963e394e9572acc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13a00833c1545184e963e394e9572acc, type: 3}
       propertyPath: m_TagString

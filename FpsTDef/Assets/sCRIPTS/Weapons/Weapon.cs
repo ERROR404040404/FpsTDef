@@ -96,6 +96,7 @@ public class Weapon : MonoBehaviour
 
         firingDirection = Camera.main;
         this.player = player;
+        
     }
 
     public void unequip()

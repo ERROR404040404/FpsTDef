@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class follow_player : MonoBehaviour
 {
-
+    public  PlayerContr player;
     public float health = 100;
     public float maxHealth = 100;
     public GameObject[] drop;
@@ -52,6 +52,7 @@ public class follow_player : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            
         }
 
 
@@ -63,7 +64,7 @@ public class follow_player : MonoBehaviour
 
         if (other.tag == "Knife")
         {
-            health -= 25;
+            health -= 50;
         }
         if (other.tag == "Bullet")
         {
