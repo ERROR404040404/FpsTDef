@@ -33,7 +33,7 @@ public class gunSwap: MonoBehaviour
         if (Keyboard.current.qKey.wasPressedThisFrame && (i == 1))
         {
             transform.localPosition = new Vector3(-(1 / 2), 0, -0.547f);
-            transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            transform.localRotation = Quaternion.Euler(-90, 0.18f, 0.547f);
 
         }
         coroutine = f(1f);
