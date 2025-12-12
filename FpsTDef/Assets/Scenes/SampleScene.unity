@@ -4769,6 +4769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1045026633}
+  - component: {fileID: 1045026634}
   m_Layer: 0
   m_Name: Gun slot
   m_TagString: Untagged
@@ -4791,6 +4792,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 497097640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1045026634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045026632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f226af2b488ca0249b1adb2e505ef0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i: 0
+  mS: {fileID: 0}
 --- !u!1 &1071819324
 GameObject:
   m_ObjectHideFlags: 0
@@ -6356,6 +6371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 0
+  isKnifeOut: 1
 --- !u!1 &1440754915
 GameObject:
   m_ObjectHideFlags: 0
