@@ -6,7 +6,7 @@ public class meleeSwap : MonoBehaviour
 {
     public int i = 0;
     private IEnumerator coroutine;
-
+    public bool isKnifeOut = true;
 
 
 
@@ -28,13 +28,13 @@ public class meleeSwap : MonoBehaviour
         {
             transform.localPosition = new Vector3(0.452f, 0.18f, 0.547f);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            
+            isKnifeOut = true;
         }
         if (Keyboard.current.qKey.wasPressedThisFrame && (i == 1))
         {
             transform.localPosition = new Vector3(-(1 / 2), 0, -0.547f);
             transform.localRotation = Quaternion.Euler(-90, 0, 0);
-                     
+            isKnifeOut = false;
         }
         coroutine = f(1f);
         StartCoroutine(coroutine);
@@ -52,5 +52,8 @@ public class meleeSwap : MonoBehaviour
         { i += 1; 
         }
         }
-
+    private void FixedUpdate()
+    {
+        print(isKnifeOut);
+    }
 }
