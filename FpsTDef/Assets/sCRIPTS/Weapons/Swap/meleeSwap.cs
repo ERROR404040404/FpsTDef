@@ -26,24 +26,31 @@ public class meleeSwap : MonoBehaviour
 
         if (Keyboard.current.qKey.wasPressedThisFrame && (i == 0))
         {
-            transform.localPosition = new Vector3((1 / 2), 0, 0);
-            transform.localRotation = Quaternion.Euler(90, 0, 0);
-            i += 1;
-            coroutine = f(1f);
-            StartCoroutine(coroutine);
+            transform.localPosition = new Vector3(0.452f, 0.18f, 0.547f);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            
         }
         if (Keyboard.current.qKey.wasPressedThisFrame && (i == 1))
         {
-            transform.localPosition = new Vector3(-(1 / 2), 0, 0);
+            transform.localPosition = new Vector3(-(1 / 2), 0, -0.547f);
             transform.localRotation = Quaternion.Euler(-90, 0, 0);
-            i -= 1;
-            coroutine = f(1f);
-            StartCoroutine(coroutine);
+                     
         }
+        coroutine = f(1f);
+        StartCoroutine(coroutine);
     }
     private IEnumerator f(float waitTime)
         {
         yield return new WaitForSeconds(waitTime);
+
+        if (i == 1)
+        { 
+            i -= 1; 
+        }
+
+        else 
+        { i += 1; 
+        }
         }
 
 }
