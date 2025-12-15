@@ -17,6 +17,8 @@ TagManager:
   - wave
   - follow
   - Gamemanager
+  - enemy_hit
+  - enemy_hit_follow
   layers:
   - Default
   - TransparentFX

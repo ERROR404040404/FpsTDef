@@ -12,7 +12,7 @@ using  System.Collections;
 public class PlayerContr : MonoBehaviour
 
 {
-    public GameObject StabyStick;
+    
     public int val = 0;
     public GameObject[] TowersPrefab;
 
@@ -131,7 +131,7 @@ public class PlayerContr : MonoBehaviour
         {
             StartCoroutine("Respawn");
             DropWeapon();
-            StabyStick.gameObject.SetActive(true);
+            GameObject.Find("Melee slot").SetActive(true);
         }
 
 
@@ -257,11 +257,11 @@ public class PlayerContr : MonoBehaviour
 
         }
 
-        if (other.gameObject.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("enemy_hit"))
         {
-            health -= 10;
+            health -= 5;
         }
-        if (other.gameObject.CompareTag("follow"))
+        if (other.gameObject.CompareTag("enemy_hit_follow"))
         {
             health -= 10;
         }

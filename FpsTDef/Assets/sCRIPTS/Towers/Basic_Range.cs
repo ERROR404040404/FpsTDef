@@ -42,7 +42,7 @@ public class Base_Tower_Range : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     { 
-            if (other.CompareTag("enemy")) 
+            if (other.CompareTag("enemy_hit") || other.CompareTag("enemy_hit_follow"))
             {
                 canFire = true;
                 Debug.Log("Video ergo cogito.");

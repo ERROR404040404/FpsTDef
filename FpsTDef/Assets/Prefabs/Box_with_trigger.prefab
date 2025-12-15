@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7165212136307876298}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: enemy
+  m_TagString: enemy_hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
