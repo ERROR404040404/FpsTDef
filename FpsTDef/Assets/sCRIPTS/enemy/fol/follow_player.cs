@@ -8,7 +8,7 @@ public class follow_player : MonoBehaviour
     public float maxHealth = 100;
     public GameObject[] drop;
     NavMeshAgent agent;
-
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +39,10 @@ public class follow_player : MonoBehaviour
 
 
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.tag);
+    }
 
 
 
@@ -51,29 +54,15 @@ public class follow_player : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             
         }
 
+        Debug.Log(other.gameObject.tag);
 
+    }
+
+    
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.tag == "Knife")
-        {
-            health -= 50;
-        }
-        if (other.tag == "Bullet")
-        {
-            health -= 50;
-        }
-        if (other.tag == "Test_Tower_damage")
-        {
-            health -= 100;
-        }
-
-    }
-}

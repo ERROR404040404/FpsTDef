@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8406879126493558067}
   - component: {fileID: 378987526813756594}
   - component: {fileID: 7165212136307876298}
+  - component: {fileID: 167748825972805500}
   m_Layer: 0
   m_Name: Cube
   m_TagString: enemy_hit
@@ -108,6 +109,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &167748825972805500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597696645592928087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a89f7c911434141a607b41def12c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  e: {fileID: 922119074948636240}
 --- !u!1 &7199753294341975632
 GameObject:
   m_ObjectHideFlags: 0
