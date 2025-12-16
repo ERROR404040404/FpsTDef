@@ -19,6 +19,7 @@ TagManager:
   - Gamemanager
   - enemy_hit
   - enemy_hit_follow
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
