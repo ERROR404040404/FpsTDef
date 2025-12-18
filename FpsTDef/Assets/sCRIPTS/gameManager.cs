@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
     public bool isPaused = false;
     GameObject pauseMenu;
     PlayerContr player;
+    GameObject loseScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,14 +18,27 @@ public class gameManager : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerContr>();
             pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+            loseScreen = GameObject.FindGameObjectWithTag("LoseScreen");
             pauseMenu.SetActive(false);
+            loseScreen.SetActive(false);
         }
     }
         // Update is called once per frame
         void Update()
         {
     
-        
+        if(GameObject.Find("Bombba") == false && SceneManager.GetActiveScene().buildIndex == 1)
+        {
+          loseScreen.SetActive(true);
+            Time.timeScale = 0;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        if (GameObject.Find("Bombba") == true && SceneManager.GetActiveScene().buildIndex == 1)
+        {
+           Time.timeScale = 1;
+        }
 
     }
 
@@ -71,6 +85,11 @@ public class gameManager : MonoBehaviour
 
         else
             Resume();
+    }
+    public void RestartLevel()
+    {
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

@@ -54,7 +54,7 @@ public class follow_player : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            //Destroy(gameObject);
+           Destroy(gameObject);
             
         }
 
