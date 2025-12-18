@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.Rendering.DebugUI.Table;
 using  System.Collections;
+
 using JetBrains.Annotations;
+
+using UnityEngine.Rendering;
+
 
 
 
@@ -53,7 +57,11 @@ public class PlayerContr : MonoBehaviour
 
     public float cameraYMaxMin = 90;
     private RigidbodyConstraints constraints;
+
     public GameObject yes;
+
+
+    public gunsquared gS; 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -74,7 +82,12 @@ public class PlayerContr : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+
         GameObject yes = GameObject.Find("Melee slot");
+
+
+
+        
 
     }
 
@@ -134,7 +147,12 @@ public class PlayerContr : MonoBehaviour
         {
             StartCoroutine("Respawn");
             DropWeapon();
+
             yes.SetActive(true);
+
+            GameObject.Find("Melee slot").SetActive(true);
+            GameObject.Find("Gun slot").SetActive(true);
+
         }
 
 
@@ -181,7 +199,11 @@ public class PlayerContr : MonoBehaviour
         interactRay.origin = playerCam.transform.position;
         interactRay.direction = playerCam.transform.forward;
 
-
+        if(gS.ammo == 0)
+        {
+            GameObject.Find("Gun slot").SetActive(false);
+            GameObject.Find("Melee slot").SetActive(true);
+        }
     }
     public void Attack(InputAction.CallbackContext context)
     {
