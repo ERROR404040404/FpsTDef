@@ -59,19 +59,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        enemyD = false;
-        if (other.tag == "Knife")
-        {
-            health -= 50;
-        }
-        if (other.tag == "Bullet")
-        {
-            health -= 50;
-        }
-        if (other.tag == "Test_Tower_damage")
-        {
-            health -= 100;
-        }
+      
 
     }
 

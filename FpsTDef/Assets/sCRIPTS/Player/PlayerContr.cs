@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.Rendering.DebugUI.Table;
 using  System.Collections;
+using JetBrains.Annotations;
 
 
 
@@ -52,6 +53,8 @@ public class PlayerContr : MonoBehaviour
 
     public float cameraYMaxMin = 90;
     private RigidbodyConstraints constraints;
+    public GameObject yes;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,7 +74,7 @@ public class PlayerContr : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-
+        GameObject yes = GameObject.Find("Melee slot");
 
     }
 
@@ -131,7 +134,7 @@ public class PlayerContr : MonoBehaviour
         {
             StartCoroutine("Respawn");
             DropWeapon();
-            GameObject.Find("Melee slot").SetActive(true);
+            yes.SetActive(true);
         }
 
 
