@@ -134,22 +134,8 @@ public class Weapon : MonoBehaviour
     {
         if(other.tag == "AmmoPack")
         {
-            ammo = maxAmmo;
-            ammoRefillsLimit--;
-            if(ammoRefillsLimit <= 0)
-            {
-                other.gameObject.SetActive(false);
-            }
-                
-
-
-            
-        }
-        if (other.tag == "GameJournalist")
-        {
-            ammo = 999999;
-            clip = 999999;
-            clipSize = 999999;
+            clip = clipSize;
+            Destroy(other.gameObject);
         }
     }
 }

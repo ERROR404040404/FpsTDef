@@ -15,7 +15,7 @@ public class enemy_a : MonoBehaviour
 
         if (other.tag == "Knife")
         {
-            e.health -= 50;
+            e.health -= 150;
             Debug.Log("knif");
         }
         if (other.tag == "Bullet")

@@ -24,6 +24,7 @@ TagManager:
   - WeaponUI
   - UI_Ammo
   - UI_Clip
+  - AmmoPack
   layers:
   - Default
   - TransparentFX

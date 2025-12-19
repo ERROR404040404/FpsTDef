@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
             Instantiate(drop[Random.Range(0, drop.Length)], transform.position, Quaternion.identity);
