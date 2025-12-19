@@ -10,6 +10,9 @@ public class gameManager : MonoBehaviour
     GameObject pauseMenu;
     PlayerContr player;
     GameObject loseScreen;
+    GameObject weaponUI;
+    TextMeshProUGUI ammoCounter;
+    TextMeshProUGUI clip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +24,8 @@ public class gameManager : MonoBehaviour
             loseScreen = GameObject.FindGameObjectWithTag("LoseScreen");
             pauseMenu.SetActive(false);
             loseScreen.SetActive(false);
+
+
         }
     }
         // Update is called once per frame
@@ -39,6 +44,7 @@ public class gameManager : MonoBehaviour
         {
            Time.timeScale = 1;
         }
+      
 
     }
 

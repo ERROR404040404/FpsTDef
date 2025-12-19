@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class gunsquared : Weapon
@@ -11,6 +12,15 @@ public class gunsquared : Weapon
     // Update is called once per frame
     void Update()
     {
-        
+        if (clip >= 0)
+        {
+            fill();
+
+        }
+    }
+    IEnumerator fill()
+    {
+        yield return new WaitForSeconds(100);
+        clip = clipSize;
     }
 }

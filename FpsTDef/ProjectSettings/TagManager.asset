@@ -20,6 +20,10 @@ TagManager:
   - enemy_hit
   - enemy_hit_follow
   - PauseMenu
+  - LoseScreen
+  - WeaponUI
+  - UI_Ammo
+  - UI_Clip
   layers:
   - Default
   - TransparentFX

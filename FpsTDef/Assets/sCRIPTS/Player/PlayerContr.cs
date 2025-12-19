@@ -94,6 +94,7 @@ public class PlayerContr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(GameObject.FindWithTag("gun") && isgunpicked)
         {
             canbuygun = false;
@@ -150,8 +151,8 @@ public class PlayerContr : MonoBehaviour
 
             yes.SetActive(true);
 
-            GameObject.Find("Melee slot").SetActive(true);
-            GameObject.Find("Gun slot").SetActive(true);
+            
+           
 
         }
 
@@ -199,11 +200,7 @@ public class PlayerContr : MonoBehaviour
         interactRay.origin = playerCam.transform.position;
         interactRay.direction = playerCam.transform.forward;
 
-        if(gS.ammo == 0)
-        {
-            GameObject.Find("Gun slot").SetActive(false);
-            GameObject.Find("Melee slot").SetActive(true);
-        }
+    
     }
     public void Attack(InputAction.CallbackContext context)
     {
