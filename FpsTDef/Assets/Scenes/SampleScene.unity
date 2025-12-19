@@ -3257,7 +3257,7 @@ MonoBehaviour:
   holdToAttack: 1
   weaponID: 0
   weaponName: 
-  projLifespan: 5
+  projLifespan: 1
   projVelocity: 10000
   reloadCooldown: 1
   rof: 0.2
@@ -5175,7 +5175,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1.5742149e-22, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0011024475, y: 23.620626, z: 17.206411}
+  m_LocalPosition: {x: -0.0011024475, y: 3.2235532, z: 17.206411}
   m_LocalScale: {x: 2.3940315, y: 2.3940315, z: 2.3940315}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7144,7 +7144,7 @@ Transform:
   m_GameObject: {fileID: 497097634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0011024475, y: 22.639074, z: 16.73}
+  m_LocalPosition: {x: -0.0011024475, y: 2.242, z: 16.73}
   m_LocalScale: {x: 2.3940318, y: 2.3940318, z: 2.3940318}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14292,7 +14292,7 @@ Transform:
   m_GameObject: {fileID: 1045026632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.097, z: 0.564}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0.564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15471,7 +15471,7 @@ Transform:
   m_GameObject: {fileID: 1133965262}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1.5742149e-22, z: -5.02751e-24, w: 1}
-  m_LocalPosition: {x: -0.0011024475, y: 23.620626, z: 17.206411}
+  m_LocalPosition: {x: -0.0011024475, y: 3.2235532, z: 17.206411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

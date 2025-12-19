@@ -111,9 +111,9 @@ public class PlayerContr : MonoBehaviour
             if (Keyboard.current.digit1Key.wasPressedThisFrame && canSpawnTower && canbuyTower)
             {
                 
-                if (bitsAmount >= 100)
+                if (bitsAmount >= 50)
                 { 
-                    bitsAmount -= 100;
+                    bitsAmount -= 50;
                     Instantiate(TowersPrefab[0], transform.position + transform.forward, transform.localRotation);
                  canSpawnTower = false;
                  StartCoroutine("TowerTimer");
@@ -124,9 +124,9 @@ public class PlayerContr : MonoBehaviour
             }
             if (Keyboard.current.digit2Key.wasPressedThisFrame && canSpawnTower)
             {
-                if (bitsAmount >= 200)
+                if (bitsAmount >= 100)
                 {
-                                    bitsAmount -= 200;   
+                                    bitsAmount -= 100;   
                 Instantiate(TowersPrefab[1], transform.position + transform.forward, transform.localRotation);
                 canSpawnTower = false;
                 StartCoroutine("TowerTimer");
@@ -135,9 +135,9 @@ public class PlayerContr : MonoBehaviour
             }
             if (Keyboard.current.digit3Key.wasPressedThisFrame && canSpawnTower)
             {
-                 if (bitsAmount >= 300)
+                 if (bitsAmount >= 150)
                 {
-                    bitsAmount -= 300;
+                    bitsAmount -= 150;
                     Instantiate(TowersPrefab[2], transform.position + transform.forward, transform.localRotation);
                     canSpawnTower = false;
                     StartCoroutine("TowerTimer");
@@ -150,9 +150,6 @@ public class PlayerContr : MonoBehaviour
             DropWeapon();
 
             yes.SetActive(true);
-
-            
-           
 
         }
 

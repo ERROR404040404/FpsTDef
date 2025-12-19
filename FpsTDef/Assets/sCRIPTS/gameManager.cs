@@ -40,7 +40,7 @@ public class gameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        if (GameObject.Find("Bombba") == true && SceneManager.GetActiveScene().buildIndex == 1)
+        if (GameObject.Find("Bombba") == true && SceneManager.GetActiveScene().buildIndex == 1 && pauseMenu == false)
         {
            Time.timeScale = 1;
         }
