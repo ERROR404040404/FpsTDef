@@ -272,3 +272,8 @@ MonoBehaviour:
   maxHealth: 100
   drop:
   - {fileID: 4185551314661464074, guid: 5150efdccbf19284d9ae6f4df9f748c6, type: 3}
+  - {fileID: 8555598990348854758, guid: 0d691614748171842b717bf974c8f0cd, type: 3}
+  - {fileID: 4185551314661464074, guid: 5150efdccbf19284d9ae6f4df9f748c6, type: 3}
+  - {fileID: 4185551314661464074, guid: 5150efdccbf19284d9ae6f4df9f748c6, type: 3}
+  - {fileID: 4185551314661464074, guid: 5150efdccbf19284d9ae6f4df9f748c6, type: 3}
+  - {fileID: 4185551314661464074, guid: 5150efdccbf19284d9ae6f4df9f748c6, type: 3}

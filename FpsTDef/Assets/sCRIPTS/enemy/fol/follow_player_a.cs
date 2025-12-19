@@ -16,7 +16,7 @@ public class follow_player_a : MonoBehaviour
 
         if (other.tag == "Knife")
         {
-            fP.health -= 50;
+            fP.health -= 150;
             Debug.Log("knif");
         }
         if (other.tag == "Bullet")
